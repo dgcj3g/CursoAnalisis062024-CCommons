@@ -1,0 +1,6 @@
+Curso analisis de datos 3, 4 y 5 de Junio de 2024
+
+-Git es una tecnica generica.
+-Zenodo
+-Docker ****
+-Historia de creacion de GIT
