@@ -4,5 +4,5 @@ Dictado por: Oscar Altuve y Arturo Sanchez
 
 Contenido:
 1-Reproducibilidad de la Ciencia.
-2-Que es y Uso de Git
-3-Tareas Practicas
+2-Que es y Uso de Git.
+3-Tareas Practicas.
