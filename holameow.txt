@@ -1,0 +1,5 @@
+Esto es un archivo de texto realizado con vm 
+para git aprender git 
+lalalalalalala.	
+
+ESTA ES LA VERSION 1
