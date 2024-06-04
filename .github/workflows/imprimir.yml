@@ -1,4 +1,4 @@
-name: ejemplo
+name: ejemploClase
 
 on:
   schedule:
