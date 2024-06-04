@@ -1,4 +1,4 @@
-name: imprimir datos y filtrar
+name: 2Jobs imprimir datos y filtrar
 
 on:
   schedule:
