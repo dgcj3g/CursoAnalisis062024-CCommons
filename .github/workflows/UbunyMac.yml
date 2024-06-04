@@ -1,0 +1,52 @@
+name: 2 Runners
+
+on:
+  schedule:
+    - cron: '00 0 * * *' # Runs every day at 00:00 UTC
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  analizando_los_datos:
+    permissions:
+      contents: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: crear tabla de resultados
+        run: |
+          grep -iv hotmail tabladatos.csv  > tabladatos_filtrados.csv
+
+      - name: Commit results
+        if: always()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git diff --quiet || git stash
+          git pull --rebase origin main
+          git stash list | grep "stash@{0}" && git stash apply
+          git add .
+          git diff --cached --exit-code || git commit -m "Add earnings output" --allow-empty
+          git push --force-with-lease origin HEAD:main
+
+  viendo_los_datos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: imprimir tabla bruta y neta
+        run: |
+          echo "tabla desde la fuente"
+          cat tabladatos.csv
+          echo
+          echo "filtrando datos"
+          cat datos_filtrados.csv
+          echo "done, ciao"

@@ -4,5 +4,7 @@ Curso analisis de datos 3, 4 y 5 de Junio de 2024
 -Zenodo
 -Docker ****
 -Historia de creacion de GIT
+-Actions ejecutar "jobs" en maquinas virtuales otorgadas por github
+-Codespaces tener una maquina virtual para interactuar a traves de vscode
 
 
