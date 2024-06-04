@@ -3,7 +3,7 @@ name: Filtrado de datos de una tabla
 on:
   schedule:
     - cron: '00 0 * * *' # Runs every day at 00:00 UTC
-    - cron: '00 0 * * *' # Runs every day at 00:00 UTC
+    - cron: '00 12 * * *' # Runs every day at 00:00 UTC
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
