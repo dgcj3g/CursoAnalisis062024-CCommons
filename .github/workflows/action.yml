@@ -1,4 +1,52 @@
-name: ejemploCurso
+name: ejemplo
 
 on:
-  schedule 
+  schedule:
+    - cron: '00 0 * * *' # Runs every day at 00:00 UTC
+    - cron: '00 0 * * *' # Runs every day at 00:00 UTC
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  check_earnings:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run command in the vm
+        run: |
+          echo "Vamos a imprimir una tabla de datos!"
+          #ls -lhrt
+          import random
+          import csv
+
+          # Generar datos aleatorios
+          nombres = ["Juan", "María", "Pedro", "Ana", "Luis", "Laura", "Carlos", "Sofía", "Diego", "Valentina"]
+          edades = [random.randint(18, 60) for _ in range(20)]
+          paises = ["Venezuela", "España", "Argentina", "México", "Colombia", "Chile", "Perú", "Estados Unidos", "Brasil", "Canadá"]
+
+          # Crear una lista de diccionarios con los datos
+          datos = []
+          for _ in range(20):
+          dato = {
+          "Nombre": random.choice(nombres),
+          "Edad": random.choice(edades),
+          "País": random.choice(paises)
+                }
+          datos.append(dato)
+
+          # Escribir los datos en un archivo CSV
+          with open("datos.csv", "w", newline="") as archivo_csv:
+          campos = ["Nombre", "Edad", "País"]
+          escritor = csv.DictWriter(archivo_csv, fieldnames=campos)
+          escritor.writeheader()
+          for dato in datos:
+            escritor.writerow(dato)
+
+          # Leer y mostrar los datos en pantalla
+          with open("datos.csv", "r") as archivo_csv
